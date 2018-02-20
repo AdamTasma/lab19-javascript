@@ -1,0 +1,53 @@
+<html>
+<head>
+
+<h1>Welcome to lab 19: buy'n stuff</h1>
+<h2> please click on the items you would like to add to your cart.</h2>
+
+<ul>
+    <button id="apple">apple</button>
+    <button id="orange">orange</button>
+    <button id="banana">banana</button>
+    <button id="kiwi">kiwi</button>
+    <button id="potter">The 9th Harry Potter Book</button>
+</ul>
+
+<h3>Your Cart</h3>
+<h3 id ="shoppingList"></h3>
+<h4>your total</h4>
+<h4 id="cartTotal">$0</h4>
+
+<button onclick="cartClear()">Empty Cart</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--<script src="C:\Users\adamt\source\repos\Lab19\jquery-3.3.1.min.js"></script> -->
+<script>
+
+$(document).ready();
+
+var items = ["apple", "orange", "banana", "kiwi", "The 9th Harry Potter Book"];
+var prices = [1.00,       1.50,      1.20,       2.00,     100.00]
+var myTotal = 0;
+
+function Calculate(x){
+    $("#shoppingList").append("<br/>" + items[x] + ": $" + prices[x]);
+    myTotal += prices[x];
+    document.getElementById("cartTotal").innerHTML ="$" + myTotal.toFixed(2);
+};
+
+$("#apple").click(function() {Calculate(0) });
+$("#orange").click(function() {Calculate(1) });
+$("#banana").click(function() {Calculate(2) });
+$("#kiwi").click(function() {Calculate(3) });
+$('#potter').click(function() {Calculate(4) });
+
+function cartClear() {
+    document.getElementById("shoppingList").innerHTML = "";
+    document.getElementById("cartTotal").innerHTML = "$0";
+    myTotal = 0;
+}
+
+</script>
+
+</head>
+</html>
